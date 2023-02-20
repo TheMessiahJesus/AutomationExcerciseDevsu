@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-20T00:27:58.552Z",
+    "end": "2023-02-20T00:27:59.567Z",
+    "duration": 1015,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8ac4222c-8abf-4812-9d44-2bd967c57056",
+      "title": "",
+      "fullFile": "cypress\\integration\\opcion2_automatizacion_apis.js",
+      "file": "cypress\\integration\\opcion2_automatizacion_apis.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "28f0b47d-3086-41d2-bbc4-a23154b1e4ea",
+          "title": "PS001_D001_TS001: Verificar que las apis de la página de servicios \"PetStore\" funcionen para los siguientes casos: 2 GET, 1 POST y 1 PUT",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "PS001_D001_TS001_TC001: Añadir una mascota a la tienda (POST)",
+              "fullTitle": "PS001_D001_TS001: Verificar que las apis de la página de servicios \"PetStore\" funcionen para los siguientes casos: 2 GET, 1 POST y 1 PUT PS001_D001_TS001_TC001: Añadir una mascota a la tienda (POST)",
+              "timedOut": null,
+              "duration": 632,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Obtain the json fixture file to process different calls inside of it\ncy.fixture('/swagger.json', {\n  fixture: 'swagger.json'\n}).then(value => {\n  cy.request({\n    method: 'POST',\n    // recover api url that resides inside the cypress.config.js file\n    url: urlAPI,\n    // the body json values needed to add a new json object\n    body: {\n      // obtain the petid value that works as a global variable that resides inside the fixture/example.json folder\n      \"id\": Number(this.data.petID),\n      \"category\": {\n        \"id\": 1,\n        \"name\": \"pug\"\n      },\n      \"name\": \"puggles\",\n      \"photoUrls\": [\"https://img.freepik.com/free-photo/pug-dog-isolated-white-background_2829-11416.jpg?w=826&t=st=1676746445~exp=1676747045~hmac=665e5f8932a733e032f8c00bda11af199874f70625557d8a65e8960647640319\"],\n      \"tags\": [{\n        \"id\": 1,\n        \"name\": \"friendly\"\n      }],\n      \"status\": \"available\"\n    }\n  }).then(response => {\n    // successful response assertion for a post \n    expect(response.status).to.eq(200);\n    // Write the result json response in the web explorer console log with the posted json value\n    console.log(response.body);\n    // response.body is automatically serialized into JSON, so that we cam assert if the desired body values are met\n    expect(response.body).to.have.property('id', Number(this.data.petID));\n    expect(response.body).to.have.property('name', 'puggles');\n    expect(response.body).to.have.property('status', 'available');\n  });\n});",
+              "err": {},
+              "uuid": "d8647332-f401-4114-8119-fde93a5a33d3",
+              "parentUUID": "28f0b47d-3086-41d2-bbc4-a23154b1e4ea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PS001_D001_TS001_TC002: Consultar la mascota ingresada previamente (Búsqueda por ID)(GET)",
+              "fullTitle": "PS001_D001_TS001: Verificar que las apis de la página de servicios \"PetStore\" funcionen para los siguientes casos: 2 GET, 1 POST y 1 PUT PS001_D001_TS001_TC002: Consultar la mascota ingresada previamente (Búsqueda por ID)(GET)",
+              "timedOut": null,
+              "duration": 120,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Obtain the json fixture file to process different calls inside of it\ncy.log(this.data.petID);\ncy.fixture('/swagger.json', {\n  fixture: 'swagger.json'\n}).then(value => {\n  cy.request({\n    method: 'GET',\n    // receive global variable for a get by id\n    url: urlAPI + '/' + this.data.petID\n  }).then(response => {\n    // successful response assertion for a get \n    expect(response.status).to.eq(200);\n    // Write the result json response in the web explorer console log with the resulting value\n    console.log(response.body);\n    // Review if the newly entered value matches with the desired id\n    expect(response.body).to.have.property('id', Number(this.data.petID));\n  });\n});",
+              "err": {},
+              "uuid": "5faad675-27dd-4d06-a399-af561e3949a1",
+              "parentUUID": "28f0b47d-3086-41d2-bbc4-a23154b1e4ea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PS001_D001_TS001_TC003: Actualizar el nombre de la mascota y el estatus de la mascota a \"sold\"(PUT)",
+              "fullTitle": "PS001_D001_TS001: Verificar que las apis de la página de servicios \"PetStore\" funcionen para los siguientes casos: 2 GET, 1 POST y 1 PUT PS001_D001_TS001_TC003: Actualizar el nombre de la mascota y el estatus de la mascota a \"sold\"(PUT)",
+              "timedOut": null,
+              "duration": 124,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Obtain the json fixture file to process different calls inside of it\ncy.fixture('/swagger.json', {\n  fixture: 'swagger.json'\n}).then(value => {\n  cy.request({\n    method: 'PUT',\n    url: urlAPI,\n    body: {\n      \"id\": Number(this.data.petID),\n      \"category\": {\n        \"id\": 1,\n        \"name\": \"pug\"\n      },\n      // modify name\n      \"name\": \"MR PUGGSLY\",\n      \"photoUrls\": [\"https://img.freepik.com/free-photo/pug-dog-isolated-white-background_2829-11416.jpg?w=826&t=st=1676746445~exp=1676747045~hmac=665e5f8932a733e032f8c00bda11af199874f70625557d8a65e8960647640319\"],\n      \"tags\": [{\n        \"id\": 1,\n        \"name\": \"friendly\"\n      }],\n      // modify status\n      \"status\": \"sold\"\n    }\n  }).then(response => {\n    // successful response assertion for a put\n    expect(response.status).to.eq(200);\n    // Write the result json response in the web explorer console log with the resulting value\n    console.log(response.body);\n    // Review if the retrieved value matches with the desired id, has the new name and the new status (sold)\n    expect(response.body).to.have.property('id', Number(this.data.petID));\n    expect(response.body).to.have.property('name', 'MR PUGGSLY');\n    expect(response.body).to.have.property('status', 'sold');\n  });\n});",
+              "err": {},
+              "uuid": "565355a2-f272-47fa-8561-c3553402f42a",
+              "parentUUID": "28f0b47d-3086-41d2-bbc4-a23154b1e4ea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PS001_D001_TS001_TC004: Consultar la mascota modificada por estatus \"sold\"(GET)",
+              "fullTitle": "PS001_D001_TS001: Verificar que las apis de la página de servicios \"PetStore\" funcionen para los siguientes casos: 2 GET, 1 POST y 1 PUT PS001_D001_TS001_TC004: Consultar la mascota modificada por estatus \"sold\"(GET)",
+              "timedOut": null,
+              "duration": 123,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Obtain the json fixture file to process different calls inside of it\ncy.fixture('/swagger.json', {\n  fixture: 'swagger.json'\n}).then(value => {\n  cy.request({\n    method: 'GET',\n    // change status from available to sold\n    url: urlAPI + '/findByStatus?status=sold'\n  }).then(response => {\n    // successful response assertion for a get \n    expect(response.status).to.eq(200);\n    // Write the result json response in the web explorer console log with the total resulting values\n    console.log(response.body);\n    // Check that we received our previously modified pet by using its id \n    response.body.forEach(pet => {\n      const petId = pet.id + \"\";\n      if (petId === this.data.petId) {\n        // Review if the new pet is now part of the sold list\n        expect(pet.status).to.eq(\"sold\");\n      }\n    });\n    // This line is commented due that it may cause lag on some computers, but it helps to \n    // review via log output if all of the results really are only sold and match with the desired \n    // numbered output according to the results obtained, based on the swagger .io page\n    /*response.body.forEach(pet=>{\n        cy.log(pet.id)\n        expect(pet.status).to.eq(\"sold\")\n     }) */\n  });\n});",
+              "err": {},
+              "uuid": "8cc3bb5d-8af7-4310-944d-05085cb40833",
+              "parentUUID": "28f0b47d-3086-41d2-bbc4-a23154b1e4ea",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d8647332-f401-4114-8119-fde93a5a33d3",
+            "5faad675-27dd-4d06-a399-af561e3949a1",
+            "565355a2-f272-47fa-8561-c3553402f42a",
+            "8cc3bb5d-8af7-4310-944d-05085cb40833"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 999,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
