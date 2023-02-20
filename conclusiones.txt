@@ -1,0 +1,4 @@
+As previously mentioned in the readme.txt file, for this project as the project workspace is just one for the API and E2E exercises, I also
+have just one conclusiones.txt file. 
+Consequently, I have also registered what I have found while executing all of the test cases required as part of this exercise inside 
+the excel file that is located under the AUTOMATIONEXCERCISEDEVSU/Manual Tests RTM 1-2 folder.
