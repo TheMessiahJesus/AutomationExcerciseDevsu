@@ -1,0 +1,24 @@
+{
+  "name": "devsu_automation",
+  "version": "1.0.0",
+  "description": "Automation Excercise - Devsu Job Apply",
+  "main": "index.js",
+  "scripts": {
+    "bootC": "npx cypress run",
+    "openC": "npx cypress open",
+    "chromeTestR": "npm run bootC -- --browser chrome --headed",
+    "mochaReportsE2E": "node_modules\\.bin\\cypress run --reporter mochawesome --spec cypress\\integration\\opcion1_automatizacion_e2e.js",
+    "mochaReportsAPI": "node_modules\\.bin\\cypress run --reporter mochawesome --spec cypress\\integration\\opcion2_automatizacion_apis.js",
+    "mochaReportsAll": "node_modules\\.bin\\cypress run --reporter mochawesome"
+  },
+  "author": "Jose Salgado",
+  "license": "ISC",
+  "dependencies": {
+    "cypress-file-upload": "^5.0.8"
+  },
+  "devDependencies": {
+    "cypress": "^12.6.0",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3"
+  }
+}
